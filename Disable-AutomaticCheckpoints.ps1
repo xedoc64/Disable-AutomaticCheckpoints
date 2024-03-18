@@ -24,7 +24,8 @@
     
     Revision History 
     -------- ----------------------------------------------------------------------- 
-    1.0      Initial community release 
+    1.0      Initial community release
+    1.1      Added watcher if a vm is imported
 
     .PARAMETER Register  
     Register the event watcher and write the watcher information into a json text file. The fill is stored aside the script.

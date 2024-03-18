@@ -72,7 +72,7 @@
 
     Remove the task
 
-    .\Disable-AutomaticCheckpoints.ps1 -RemoveTask
+    .\Disable-AutomaticCheckpoints.ps1 -`RemoveTask
 #> 
 param(
     [Parameter(ParameterSetName = "Register", Mandatory = $true)][switch]$Register,
@@ -152,9 +152,11 @@ function Register-Watcher {
     }
 
     # event id from creating a new VM
-    $eventId = 13002
+    # event id 13002 = create a new vm
+    # event id 18304 = register a vm after import
+
     $LogName = 'Microsoft-Windows-Hyper-V-VMMS-Admin'
-    $select = "*[System[(EventID=$eventId)]]"
+    $select = "*[System[(EventID=13002 or EventID=18304)]]"
     $query = [System.Diagnostics.Eventing.Reader.EventLogQuery]::new($logName, [System.Diagnostics.Eventing.Reader.PathType]::LogName, $select)
     
     $watcher = [System.Diagnostics.Eventing.Reader.EventLogWatcher]::new($query)

@@ -192,7 +192,7 @@ function Register-Watcher {
     }
     
     if ($ReceiveOutput) {
-        # note that this will only work if rou run the script directly and let the powershell window stay open. Will not work when started via the task scheduler.
+        # note that this will only work if you run the script directly and let the powershell window stay open. Will not work when started via the task scheduler.
         Receive-Job $job
     }
     

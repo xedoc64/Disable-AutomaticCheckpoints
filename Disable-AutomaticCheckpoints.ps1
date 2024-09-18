@@ -7,7 +7,7 @@
     THIS CODE IS MADE AVAILABLE AS IS, WITHOUT WARRANTY OF ANY KIND. THE ENTIRE  
     RISK OF THE USE OR THE RESULTS FROM THE USE OF THIS CODE REMAINS WITH THE USER. 
 
-    Version 1.1, 2024-03-16
+    Version 1.2, 2024-09-18
 
     Please submit ideas, comments, and suggestions using GitHub. 
 
@@ -247,7 +247,7 @@ function Install-Task {
     }
 
     $taskTrigger = New-ScheduledTaskTrigger -AtStartup
-    $taskAction = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-NoLogo -NoProfile -WindowStyle Hidden -Noninteractive -NoExit -file $($MyInvocation.ScriptName) -Register" -WorkingDirectory "$($scriptPath)"
+    $taskAction = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-NoLogo -NoProfile -WindowStyle Hidden -Noninteractive -NoExit -file ""$($MyInvocation.ScriptName)"" -Register" -WorkingDirectory "$($scriptPath)"
     $settingSet = New-ScheduledTaskSettingsSet -DontStopIfGoingOnBatteries -DontStopOnIdleEnd -AllowStartIfOnBatteries -ExecutionTimeLimit '00:00:00'
     $Principal = New-ScheduledTaskPrincipal -UserId "NT AUTHORITY\SYSTEM" -LogonType ServiceAccount
     Register-ScheduledTask "Disable-AutomaticCheckpoints" -Action $taskAction -Trigger $taskTrigger -Principal $Principal -Settings $settingSet
